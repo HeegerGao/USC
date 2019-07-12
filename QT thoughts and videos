@@ -1,0 +1,15 @@
+some great demo of qtrobot:
+
+https://www.youtube.com/watch?v=IjFGfqiQDQs      a lot of useful gestures and emotions and their combination
+https://www.youtube.com/watch?v=P2F_a1V7e2M      with a child
+
+
+
+
+
+
+thoughts:
+
+1. we can use face detecion to let the robot track the children's faces, so it can look more interactive. 
+2. we should not repete any same sentence(maybe even gesture) in one experiment to let it be more real.
+3. combine the gesture with the emotion and word to set some series of interface
