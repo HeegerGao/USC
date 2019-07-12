@@ -13,3 +13,14 @@ thoughts:
 1. we can use face detecion to let the robot track the children's faces, so it can look more interactive. 
 2. we should not repete any same sentence(maybe even gesture) in one experiment to let it be more real.
 3. combine the gesture with the emotion and word to set some series of interface
+
+
+
+
+
+
+configure
+
+ElbowRoll: 肘关节的角度，只能小于零，小于零为往回缩，只能-90~0
+ShoulderRoll：肩膀关节打开和闭合，只能为小于零的值，越小越往回缩，只能-90~0
+ShoulderPitch：肩膀绕指向外面的轴进行旋转，-135~135，负值为下，正值为上，0为水平
