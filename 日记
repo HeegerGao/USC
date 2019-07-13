@@ -2,4 +2,16 @@
 7/2 和Jonathan见面，商讨了任务，让我用astra pro和imus来判断thumb up/down，然后回去买了锅碗瓢盆各种食材；visit 斯台普斯照了好多相片哈哈哈
 7/3 上安全培训课，得到证书；疯狂配置camera环境
 7/4 游山玩水：星光大道、ucla、santa monica、grand park  
-    拍了Hollywood标志 ucla真的环境好啊 那几个小屁孩真逗 好多中国人 沙滩上那帮人看上去都已经烤熟了还在烤 
+    拍了Hollywood标志 ucla真的环境好啊 那几个小屁孩真逗 好多中国人 沙滩上那帮人看上去都已经烤熟了还在烤 美国人真的喜欢DJ和电音 原来DJ就是把各种音乐
+    现场组合啊 美国的烟花太差劲了
+7/5~7/7 疯狂安装nuitrack，真是个垃圾软件
+
+7/8 换方法了，使用CMU的openpose深度学习库完成thumb识别
+7/9 会见maja和sanger教授 他们开会说的啥根本听不懂太快了 catherine真的是个有意思的学姐 get new work 进行QTrobot工作
+7/10 QT这么贵，7000刀，真能骗钱 认识了乔小洋和Adam Interaction lab真是比sangerlab有趣多了 QTrobot的例程不能用 给他们CTO发邮件
+7/11 CMU的方法太慢了 开始使用自己的数图算法：高斯混合模型去除背景，使用Ycrcb提取人体表皮的红色，高斯滤波+腐蚀去除噪声，
+     opencv找到轮廓并找到尖的地方获得指尖，限制手指位置来去除胳膊，重心为基点
+7/12 他们CTO回复了，原来ros里面要等待subscriber连接到再publish 看了maja给的论文，毛用没有，论文是移动机器人的东西 和Jonathan 讨论方案，我们需要在
+     children带上黑色辅助手的时候进行识别 让Jonathan开始布置房间 进行QT各个关节的角度范围的测量 吃火锅！ Adam实在是太招人喜欢了 他知道好多东西 他
+     简直就是LA的king
+7/13 黑客马拉松 搞了一天最后才定下来搞魔方，没意思 韩国菜一点也不特别，没啥韩国特色 
