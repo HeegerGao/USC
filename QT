@@ -27,3 +27,5 @@ ShoulderPitch：肩膀绕指向外面的轴进行旋转，-135~135，负值为�
 
 HeadYaw:-45~45,头左右动，负值为机器人的右，正值为机器人的左
 HeadPitch：-15~20，头上下动，负值为后仰，正值为向下看
+
+尺寸:https://robots.ieee.org/robots/qtrobot/
