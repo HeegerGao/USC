@@ -1,6 +1,14 @@
-
+<?xml version="1.0"?>
 <robot name="qtrobot">
-  <link name="head_sphere"/>
+  <link name="body_cylinder">
+    <visual>
+      <geometry>
+        <cylinder length="40" radius="10"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="head_sphere">
     <visual>
       <origin xyz="0 6 0" rpy="0 0 0"/>
       <geometry>
@@ -9,7 +17,7 @@
     </visual>
   </link>
 
-  <link name="head_box"/>
+  <link name="head_box">
     <visual>
       <origin xyz="0 7 0" rpy="0 0 0"/>
       <geometry>
@@ -18,7 +26,7 @@
     </visual>
   </link>
 
-  <link name="neck"/>
+  <link name="neck">
     <visual>
       <origin xyz="0 21 0" rpy="0 0 0"/>
       <geometry>
@@ -27,16 +35,7 @@
     </visual>
   </link>
 
-  <link name="body_cylinder"/>
-    <visual>
-      <origin xyz="0 20 0" rpy="0 0 0"/>
-      <geometry>
-        <cylinder length="40" radius="10"/>
-      </geometry>
-    </visual>
-  </link>
-
-  <link name="right_shoulder"/>
+    <link name="right_shoulder">
     <visual>
       <origin xyz="-12 14 0" rpy="0 0 0"/>
       <geometry>
@@ -45,7 +44,7 @@
     </visual>
   </link>
   
-  <link name="right_arm"/>
+  <link name="right_arm">
     <visual>
       <origin xyz="0 -10 0" rpy="0 0 0"/>
       <geometry>
@@ -54,7 +53,7 @@
     </visual>
   </link>
 
-  <link name="right_hand"/>
+  <link name="right_hand">
     <visual>
       <origin xyz="0 -4 0" rpy="0 0 0"/>
       <geometry>
@@ -63,7 +62,7 @@
     </visual>
   </link>
 
-  <link name="left_shoulder"/>
+  <link name="left_shoulder">
     <visual>
       <origin xyz="12 14 0" rpy="0 0 0"/>
       <geometry>
@@ -72,7 +71,7 @@
     </visual>
   </link>
 
-  <link name="left_arm"/>
+  <link name="left_arm">
     <visual>
       <origin xyz="0 -10 0" rpy="0 0 0"/>
       <geometry>
@@ -81,7 +80,7 @@
     </visual>
   </link>
 
-  <link name="left_hand"/>
+  <link name="left_hand">
     <visual>
       <origin xyz="0 -4 0" rpy="0 0 0"/>
       <geometry>
@@ -175,6 +174,5 @@
     <parent link="left_arm"/>
     <child link="left_hand"/>
   </joint>
-
 </robot>
 
