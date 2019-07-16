@@ -4,23 +4,7 @@ https://www.youtube.com/watch?v=IjFGfqiQDQs      a lot of useful gestures and em
 https://www.youtube.com/watch?v=P2F_a1V7e2M      with a child
 
 
-
-
-
-
-thoughts:
-
-1. we can use face detecion to let the robot track the children's faces, so it can look more interactive. 
-2. we should not repete any same sentence(maybe even gesture) in one experiment to let it be more real.
-3. combine the gesture with the emotion and word to set some series of interface
-
-
-
-
-
-
 configure
-
 ElbowRoll: 肘关节的角度，只能小于零，小于零为往回缩，只能-90~0
 ShoulderRoll：肩膀关节打开和闭合，只能为小于零的值，越小越往回缩，只能-90~0
 ShoulderPitch：肩膀绕指向外面的轴进行旋转，-135~135，右手负值为下，正值为上，0为水平；左手负值为上，正值为下，0为水平
@@ -29,8 +13,6 @@ HeadYaw:-45~45,头左右动，负值为机器人的右，正值为机器人的�
 HeadPitch：-15~20，头上下动，负值为后仰，正值为向下看
 
 尺寸:https://robots.ieee.org/robots/qtrobot/
-
-
 
 
 计划做的:
@@ -45,4 +27,37 @@ HeadPitch：-15~20，头上下动，负值为后仰，正值为向下看
 害羞：手背后，头低下，视频一1:45
 摆pose：一手敬礼一手指天，像视频二2:40
 
-2.和anduow问一下，用什么方法做轨迹规划和运动控制，看他有没有啥经验之类的 urdf两个自由度怎么写的
+
+new：
+1.交谈：
+  1.point
+  2.把持
+  3.一手指天：
+  4.张开双臂拥抱：
+2.倾听：
+  1.手背后：
+  2.点头
+  3.纯面部表情：惊讶，喜悦，困惑等，当孩子们回答时
+  4.
+3.鼓励：
+  1.高举双手，表示正确
+  2.飞吻表示正确
+  3.鼓掌
+  4.
+4.猜测：
+  1.纯面部表情：困惑
+  2.手托下巴
+  
+5.其他：
+  1.垂直举双手
+  2.双手叉腰
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
