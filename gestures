@@ -83,7 +83,37 @@ def hold_left(left_pub, left_arm):
     #归位
     left_arm.data = [-90, -60, -30]
     go_position(left_pub, left_arm, 3)
-
+    
+    
+    #挠头
+    left_arm.data = [-80, -30,-60]
+    right_arm.data = [80, -30,-60]
+    left_pub.publish(left_arm)
+    right_pub.publish(right_arm)
+    sleep(2)
+    left_arm.data = [-100, -30,-60]
+    right_arm.data = [100, -30,-60]
+    left_pub.publish(left_arm)
+    right_pub.publish(right_arm)
+    sleep(1)
+    left_arm.data = [-80, -30,-60]
+    right_arm.data = [80, -30,-60]
+    left_pub.publish(left_arm)
+    right_pub.publish(right_arm)
+    sleep(1)
+    left_arm.data = [-100, -30,-60]
+    right_arm.data = [100, -30,-60]
+    left_pub.publish(left_arm)
+    right_pub.publish(right_arm)
+    sleep(1)
+    left_arm.data = [90, -60,-30]
+    right_arm.data = [-90, -60,-30]
+    left_pub.publish(left_arm)
+    right_pub.publish(right_arm)
+    sleep(2)
+    
+    
+    
 
 def right_point(right_pub, right_arm):
     #右胳膊指人
