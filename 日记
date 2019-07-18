@@ -21,4 +21,5 @@
 7/16 早上学机器人，下午写了个camera的topic，给QT设计了15套动作，希望明天展示顺利吧
 7/17 早上上了phd申请的交流课，韩国学生竟然不知道可以直接申请PhD而不用先申请Masher，感觉好落后 下午和Catherine一起testQT并且给了maja一个demo，
      需要：设定reward function， 即不能每次都给encourage；为gestures设定parameter量级；跟踪表现，如果一直很好则……一直不好则…… maja真是听君一席话胜读十年书
-     
+     胡子健使用了yolo检测小球机器人移动，设计了吸引小朋友抓取的动作
+7/18 早上配好了astra pro相机，和adam一起找到了如何把某个相机禁掉 中午方便面真不好吃 下午整理了QT的动作，设计了新动作，思考了feedback
