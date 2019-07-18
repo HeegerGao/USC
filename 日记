@@ -19,3 +19,6 @@
 
 7/15 踏马的原来有这么多例子动作，白写了一天 项目感觉没啥意思，以后还是多自学吧 应该和Catherine一起讨论着做
 7/16 早上学机器人，下午写了个camera的topic，给QT设计了15套动作，希望明天展示顺利吧
+7/17 早上上了phd申请的交流课，韩国学生竟然不知道可以直接申请PhD而不用先申请Masher，感觉好落后 下午和Catherine一起testQT并且给了maja一个demo，
+     需要：设定reward function， 即不能每次都给encourage；为gestures设定parameter量级；跟踪表现，如果一直很好则……一直不好则…… maja真是听君一席话胜读十年书
+     
