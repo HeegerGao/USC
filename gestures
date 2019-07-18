@@ -1,216 +1,257 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 import os
+import sys
 import time
+import string
+from std_msgs.msg import String
+from qt_robot_interface.srv import *
+from qt_gesture_controller.srv import *
 from std_msgs.msg import Float64MultiArray
 from sensor_msgs.msg import JointState
 
-def go_position(pub, msg, type):
-    #运行到某个位置
-    if type == 1:
-        #头
-        pub.publish(msg)
-        while True :
-            ros::spinOnce()
-            if abs(joint_state_record.js.position[0]-msg.data[0])<3 and abs(joint_state_record.js.position[1]-msg.data[1])<3:
-                break
-    
-    elif type == 2:
-        #右胳膊
-        pub.publish(msg)
-        while True :
-            ros::spinOnce()
-            if abs(joint_state_record.js.position[2]-msg.data[0])<3 and abs(joint_state_record.js.position[3]-msg.data[1])<3 and abs(joint_state_record.js.position[4]-msg.data[2])<3:
-                break
 
+def choose_behaviors(number, right_pub, left_pub, head_pub, emotionShow_pub, gesturePlay_pub, speechSay_pub, audioPlay_pub):
+    # print("Please type characters to show a certain behavior, input 0 to quit:")
+    # number = sys.stdin.readline()
+    # return
+    if(number == 1):
+    #show_both_hands:6.5s
+        emotionShow_pub.publish("QT/talking")
+        left_arm = Float64MultiArray()
+        right_arm = Float64MultiArray()
+        left_arm.data = [10, -60, -15]
+        left_pub.publish(left_arm)
+        time.sleep(2)
+        right_arm.data = [-10, -60, -15]
+        right_pub.publish(right_arm)
+        time.sleep(2)
+        left_arm.data = [90, -60, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-90, -60, -30]
+        right_pub.publish(right_arm)
+        time.sleep(2.5)    
+    elif(number == 2):
+    #hold:5s
+        gesturePlay_pub.publish("QT/show_QT")
+        emotionShow_pub.publish("QT/talking")
+        time.sleep(5)
+    elif(number == 3):
+    #challenge:5s
+        gesturePlay_pub.publish("QT/challenge")
+        emotionShow_pub.publish("QT/talking")
+        time.sleep(5)
+    elif(number == 4):
+    #arm holding:10s
+        gesturePlay_pub.publish("QT/show_left")
+        emotionShow_pub.publish("QT/talking")
+        time.sleep(5)
+        gesturePlay_pub.publish("QT/show_right")
+        emotionShow_pub.publish("QT/talking")
+        time.sleep(5)
+    elif(number == 5):
+    #arm back smile:7s
+        emotionShow_pub.publish("QT/calming_down")
+        time.sleep(1)
+        gesturePlay_pub.publish("QT/bored")
+        time.sleep(6)
+    elif(number == 6):
+    #nod:4s
+        head = Float64MultiArray()
+        emotionShow_pub.publish("QT/showing_smile")
+        head.data = [0,-10]
+        head_pub.publish(head)
+        time.sleep(1)
+        head.data = [0,10]
+        head_pub.publish(head)
+        time.sleep(1)
+        head.data = [0,0]
+        head_pub.publish(head)
+        time.sleep(2)
+    elif(number == 7):
+    #confused:8s
+        right_arm = Float64MultiArray()
+        right_arm.data = [40, -60, -90]
+        right_pub.publish(right_arm)
+        time.sleep(2)
+        emotionShow_pub.publish("QT/confused")
+        time.sleep(2)
+        right_arm.data = [-90, -60, -30]
+        right_pub.publish(right_arm)
+        time.sleep(4)
+    elif(number == 8):
+    #yawn:6.8s
+        gesturePlay_pub.publish("QT/yawn")
+        time.sleep(0.8)
+        emotionShow_pub.publish("QT/yawn") 
+        time.sleep(6)
+    elif(number == 9):
+    #point each:8.5s
+        emotionShow_pub.publish("QT/talking")
+        left_arm = Float64MultiArray()
+        right_arm = Float64MultiArray()
+        left_arm.data = [0, -90, -10]
+        left_pub.publish(left_arm)
+        time.sleep(2)
+        left_arm.data = [90, -60, -30]
+        left_pub.publish(left_arm)
+        time.sleep(2)
+        emotionShow_pub.publish("QT/talking")
+        right_arm.data = [0, -90, -10]
+        right_pub.publish(right_arm)
+        time.sleep(2)
+        right_arm.data = [-90, -60, -30]
+        right_pub.publish(right_arm)
+        time.sleep(2.5) 
+    elif(number == 10):
+    #surprise:5.5s
+        gesturePlay_pub.publish("QT/surprise")
+        emotionShow_pub.publish("QT/surprise")
+        time.sleep(5.5)
+    elif(number == 11):
+    #right:5s
+        gesturePlay_pub.publish("QT/happy")
+        emotionShow_pub.publish("QT/happy")
+        time.sleep(5)
+    elif(number == 12):
+    #hi/bye:7s
+        gesturePlay_pub.publish("QT/hi")
+        emotionShow_pub.publish("QT/happy")
+        time.sleep(7)
+    elif(number == 13):
+    #fly kiss:7.5s
+        gesturePlay_pub.publish("QT/kiss")
+        time.sleep(1)
+        emotionShow_pub.publish("QT/kiss")
+        time.sleep(6.5)
+    elif(number == 14):
+    #hug:6s
+        left_arm = Float64MultiArray()
+        right_arm = Float64MultiArray()
+        emotionShow_pub.publish("QT/happy")
+        left_arm.data = [-20, -10, -15]
+        left_pub.publish(left_arm)
+        right_arm.data = [20, -10, -15]
+        right_pub.publish(right_arm)
+        time.sleep(3)
+        left_arm.data = [90, -60, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-90, -60, -30]
+        right_pub.publish(right_arm)
+        time.sleep(3)
+    elif(number == 15):
+    #hand clap:8.8s
+        left_arm = Float64MultiArray()
+        right_arm = Float64MultiArray()
+        emotionShow_pub.publish("QT/happy")
+        left_arm.data = [10, -90, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-10, -90, -30]
+        right_pub.publish(right_arm)
+        time.sleep(1.8)
+        left_arm.data = [10, -90, -90]
+        left_pub.publish(left_arm)
+        right_arm.data = [-10, -90, -90]
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [10, -90, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-10, -90, -30]
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [10, -90, -90]
+        left_pub.publish(left_arm)
+        right_arm.data = [-10, -90, -90]
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [10, -90, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-10, -90, -30]
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [90, -60, -30]
+        left_pub.publish(left_arm)
+        right_arm.data = [-90, -60, -30]
+        right_pub.publish(right_arm)
+        time.sleep(3)
+    elif(number == 16):
+    #touch head:11s
+        left_arm = Float64MultiArray()
+        right_arm = Float64MultiArray()
+        left_arm.data = [-80, -40,-80]
+        right_arm.data = [80, -40,-80]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(3)
+        emotionShow_pub.publish("QT/confused")
+        left_arm.data = [-100, -40,-80]
+        right_arm.data = [100, -40,-80]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [-80, -40,-80]
+        right_arm.data = [80, -40,-80]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [-100, -40,-80]
+        right_arm.data = [100, -40,-80]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [-80, -40,-80]
+        right_arm.data = [80, -40,-80]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(1)
+        left_arm.data = [90, -60,-30]
+        right_arm.data = [-90, -60,-30]
+        left_pub.publish(left_arm)
+        right_pub.publish(right_arm)
+        time.sleep(4)
     else:
-        #左胳膊
-        pub.publish(msg)
-        while True :
-            ros::spinOnce()
-            if abs(joint_state_record.js.position[5]-msg.data[0])<3 and abs(joint_state_record.js.position[6]-msg.data[1])<3 and abs(joint_state_record.js.position[7]-msg.data[2])<3:
-                break
-
-def go_both_hand(left_pub,right_pub,left_arm, right_arm):
-    #两只手一起动
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    while True :
-        ros::spinOnce()
-        if abs(joint_state_record.js.position[2]-right_arm.data[0])<3 and abs(joint_state_record.js.position[3]-right_arm.data[1])<3 and abs(joint_state_record.js.position[4]-right_arm.data[2])<3 and abs(joint_state_record.js.position[5]-left_arm.data[0])<3 and abs(joint_state_record.js.position[6]-left_arm.data[1])<3 and abs(joint_state_record.js.position[7]-left_arm.data[2])<3:
-            break
-
-
-def wave_left_arm(left_pub, left_arm):
-    #左胳膊挥手
-    #抬到90度
-    left_arm.data = [0, -60, -30]
-    go_position(left_pub, left_arm, 3)
-    #展开
-    left_arm.data = [45, -15, -30]
-    go_position(left_pub, left_arm, 3)
-    #收回
-    left_arm.data = [45, -30, -75]
-    go_position(left_pub, left_arm, 3)
-    #展开
-    left_arm.data = [45, -15, -30]
-    go_position(left_pub, left_arm, 3)
-    #收回
-    left_arm.data = [45, -30, -75]
-    go_position(left_pub, left_arm, 3)
-    #展开
-    left_arm.data = [45, -15, -30]
-    go_position(left_pub, left_arm, 3)
-    #收回
-    left_arm.data = [45, -30, -75]
-    go_position(left_pub, left_arm, 3)
-    #归位
-    left_arm.data = [-90, -60, -30]
-    go_position(left_pub, left_arm, 3)
-
-
-def hold_left(left_pub, left_arm):
-    #左胳膊把持
-    #抬到45度，有一些外翻，胳膊伸直
-    left_arm.data = [-45, -60, -10]
-    go_position(left_pub, left_arm, 3)
-    #手肘收紧
-    left_arm.data = [-45, -60, -60]
-    go_position(left_pub, left_arm, 3)
-    #肩膀回缩，同时手肘收紧
-    left_arm.data = [-45, -30, -90]
-    go_position(left_pub, left_arm, 3)
-    #归位
-    left_arm.data = [-90, -60, -30]
-    go_position(left_pub, left_arm, 3)
-    
-    
-    #挠头
-    left_arm.data = [-80, -30,-60]
-    right_arm.data = [80, -30,-60]
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    sleep(2)
-    left_arm.data = [-100, -30,-60]
-    right_arm.data = [100, -30,-60]
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    sleep(1)
-    left_arm.data = [-80, -30,-60]
-    right_arm.data = [80, -30,-60]
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    sleep(1)
-    left_arm.data = [-100, -30,-60]
-    right_arm.data = [100, -30,-60]
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    sleep(1)
-    left_arm.data = [90, -60,-30]
-    right_arm.data = [-90, -60,-30]
-    left_pub.publish(left_arm)
-    right_pub.publish(right_arm)
-    sleep(2)
-    
-    
-    
-
-def right_point(right_pub, right_arm):
-    #右胳膊指人
-    #抬到80度，伸直
-    right_arm.data = [-10, -80, -5]
-    go_position(right_pub, right_arm, 2)
-    #指1秒
-    time.sleep(1)
-    #归位
-    right_arm.data = [-90, -60, -30]
-    go_position(right_pub, right_arm, 2)
-
-
-def shake_head(head_pub, head):
-    #摇头
-    #头微微低下
-    head.data = [0,10]
-    go_position(head_pub, head, 1)
-    #左摇
-    head.data = [-45,10]
-    go_position(head_pub, head, 1)
-    #右摇
-    head.data = [45,10]
-    go_position(head_pub, head, 1)
-    #左摇
-    head.data = [-45,10]
-    go_position(head_pub, head, 1)
-    #右摇
-    head.data = [45,10]
-    go_position(head_pub, head, 1)
-    #归位
-    head.data = [0,0]
-    go_position(head_pub, head, 1)
-
-
-def wave_two_arm(left_pub, left_arm, right_pub, right_arm):
-    #两只手相向摇手，表示否定
-    #抬到90度
-    left_arm.data = [0,]
-
-class joint_state_record:
-    js = JointState()
-
-    def __init__(self):
-        rospy.Subscriber('/qt_robot/joints/state', JointState, self.joint_states_callback)
-
-    def joint_states_callback(self, msg):
-        joint_state_record.js = msg
+        print("Please use a correct number!")
 
 
 
 if __name__ == '__main__':
-
-    RightShoulderPitch = -90 #旋转
-    RightShoulderRoll = -60 #打开/闭合
-    RightElbowRoll = -30
-
-    LeftShoulderPitch = -90
-    LeftShoulderRoll = -60 
-    LeftElbowRoll = -30
-
-    HeadYaw = 0 #左右;
-    HeadPitch = 0 #上下
-
-    right_arm = Float64MultiArray()
-    left_arm = Float64MultiArray()
-    head = Float64MultiArray()
-
-    right_arm.data = [RightShoulderPitch, RightShoulderRoll, RightElbowRoll]
-    left_arm.data = [LeftShoulderPitch, LeftShoulderRoll, LeftElbowRoll]
-    head.data = [HeadYaw, HeadPitch]
-
-    rospy.init_node('joints_command_example')
-    
-    # create a publisher
+    rospy.init_node('behaviors')
+    # create publishers
+    #motors
+    #number = 2
     right_pub = rospy.Publisher('/qt_robot/right_arm_position/command', Float64MultiArray, queue_size=1)
     left_pub = rospy.Publisher('/qt_robot/left_arm_position/command', Float64MultiArray, queue_size=1)
     head_pub = rospy.Publisher('/qt_robot/head_position/command', Float64MultiArray, queue_size=1)
+    #emotion
+    emotionShow_pub = rospy.Publisher('/qt_robot/emotion/show', String, queue_size=10)
+    #gesture
+    gesturePlay_pub = rospy.Publisher('/qt_robot/gesture/play', String, queue_size=10)
+    #speech
+    speechSay_pub = rospy.Publisher('/qt_robot/speech/say', String, queue_size=10)
+    #audio
+    audioPlay_pub = rospy.Publisher('/qt_robot/audio/play', String, queue_size=10)
 
-    # create joint state subscriber
-    js_record = joint_state_record()
-
-    # wait for publisher/subscriber connections
+    #wait for publisher/subscriber connections
     wtime_begin = rospy.get_time()
-    while (right_pub.get_num_connections() == 0 or left_pub.get_num_connections() == 0 or head_pub.get_num_connections() == 0) :
+    while (audioPlay_pub.get_num_connections() == 0 or
+           speechSay_pub.get_num_connections() == 0 or
+           gesturePlay_pub.get_num_connections() == 0 or
+           emotionShow_pub.get_num_connections() == 0 or
+           right_pub.get_num_connections() == 0 or
+           left_pub.get_num_connections() == 0 or
+           head_pub.get_num_connections() == 0 ) :
+
         rospy.loginfo("waiting for subscriber connections")
-        if rospy.get_time() - wtime_begin > 10.0:
+        if rospy.get_time() - wtime_begin > 5.0:
             rospy.logerr("Timeout while waiting for subscribers connection!")
             sys.exit()
         rospy.sleep(1)
+
         
-    rospy.loginfo("publishing motor commnad...")
     try:
-        right_pub.publish(right_arm)
-        left_pub.publish(left_arm)
-        head_pub.publish(head)
+        choose_behaviors(16, right_pub, left_pub, head_pub, emotionShow_pub, gesturePlay_pub, speechSay_pub, audioPlay_pub)
     except rospy.ROSInterruptException:
         rospy.logerr("could not publish motor commnad!")
-        
-    rospy.loginfo("motor commnad published")  
+
+
