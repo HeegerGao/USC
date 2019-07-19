@@ -5,15 +5,39 @@ import os
 import sys
 import time
 import string
+import random
 from std_msgs.msg import String
 from qt_robot_interface.srv import *
 from qt_gesture_controller.srv import *
 from std_msgs.msg import Float64MultiArray
 from sensor_msgs.msg import JointState
 
+rospy.init_node('qt_robot_interface1') #unique node name
+speechSay_pub = rospy.Publisher('/qt_robot/behavior/talkText', String, queue_size = 10)
+emotionShow_pub = rospy.Publisher('/qt_robot/emotion/show', String, queue_size = 10)
+gesturePlay_pub = rospy.Publisher('/qt_robot/gesture/play', String, queue_size = 10)
+audioPlay_pub = rospy.Publisher('/qt_robot/audio/play', String, queue_size=10)
+right_pub = rospy.Publisher('/qt_robot/right_arm_position/command', Float64MultiArray, queue_size=10)
+left_pub = rospy.Publisher('/qt_robot/left_arm_position/command', Float64MultiArray, queue_size=10)
+head_pub = rospy.Publisher('//qt_robot/head_position/command', Float64MultiArray, queue_size=10)
 
-def choose_behaviors(number, right_pub, left_pub, head_pub, emotionShow_pub, gesturePlay_pub, speechSay_pub, audioPlay_pub):
+while (speechSay_pub.get_num_connections() == 0 or
+       audioPlay_pub.get_num_connections() == 0 or
+       emotionShow_pub.get_num_connections() == 0 or
+       gesturePlay_pub.get_num_connections() == 0 or
+       right_pub.get_num_connections() == 0 or
+       left_pub.get_num_connections() == 0 or 
+       head_pub.get_num_connections() == 0) :
+    rospy.loginfo("waiting for subscriber connections")
+    if rospy.get_time() - wtime_begin > 5.0:
+        rospy.logerr("Timeout while waiting for subscribers connection!")
+        sys.exit()
+    rospy.sleep(1)
 
+
+
+def choose_behaviors(number):
+    global right_pub, left_pub, head_pub, emotionShow_pub, gesturePlay_pub, speechSay_pub, audioPlay_pub
     #talking:1~6
     if(number == 1):
     #show_both_hands:6.5s
@@ -253,7 +277,7 @@ def choose_behaviors(number, right_pub, left_pub, head_pub, emotionShow_pub, ges
         time.sleep(3)
 
 
-    #personility:16~18
+    #special_function:16~18
     elif(number == 16):
     #hi/bye:7s
         gesturePlay_pub.publish("QT/hi")
@@ -271,5 +295,28 @@ def choose_behaviors(number, right_pub, left_pub, head_pub, emotionShow_pub, ges
         time.sleep(0.8)
         emotionShow_pub.publish("QT/yawn") 
         time.sleep(6)
+    
+    #rest
+    elif(number == 19):
+    #
+        
+    
     else:
         print("Please use a correct number!")
+        
+        
+def gesture_talk():
+    choose_behaviors(random.randint(1, 6))
+    
+    
+def gesture_listen():
+    choose_behaviors(random.randint(7, 8))
+    
+
+def gesture_guess():
+    choose_behaviors(random.randint(9, 11))
+
+
+def gesture_encourage():
+    choose_behaviors(random.randint(12, 15))
+    
