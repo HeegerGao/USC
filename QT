@@ -94,7 +94,5 @@ QT personality：
       游戏开始，各种说话，rosbag记录
       每次猜一次或者输入一次角度就记录rosbag、5s强制、可以打断直接结束
       编写一个新函数来根据以往的动作给出新的encourage的分数级别
-    
-    
-  
-  
+      使用msg = rospy.wait_for_message("my_topic", MyType)
+可能有的topic：thumb_result  IMU_result 
