@@ -399,8 +399,9 @@ if __name__=="__main__":
             #configuration
             correctup = raw_input('Was it a good thumbs up? ')
             if correctup == 'yes':
+            # maybe need to sleep some time to wait for input
             # msg = rospy.wait_for_message("/thumb_result", Res)
-            #
+            # msg.up_down
             # ^ these two lines would be replaced by camera or IMU input, worst case experimenter prompts
             #we need a time limit they can answer in - 5 sec?
                 speechSay_pub.publish("Awesome! Now can you show me a thumbs down to say no?") #6 sec
@@ -467,13 +468,18 @@ if __name__=="__main__":
                             break
                         else:
                             print("wrong input!please input again.")
-                else:
+                elif val == 'yes':
                     speechSay_pub.publish('Hooray I got it! Thanks for playing with me. Let’s play again!') #8 sec
                     #should they play a minimum of 3 games mandatory, the rest optional?
                     choose_behaviors(13)
                     yescounter += 1
                     print("Number of yes: "+str(yescounter)+". Number of no: "+str(nocounter))
                     print('I got it!')
+                    break
+                else:
+                    #break the game
+                    speechSay_pub.publish("Hmm Okay, I wish to play with you next time.") #6.5 sec
+                    gesture_talk(1)
                     break
         else:
             print("wrong input!please input again.")
