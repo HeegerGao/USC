@@ -429,7 +429,6 @@ if __name__=="__main__":
             gesture_talk(1)
             rospy.sleep(5)
             start = input('What is your number? ')#type a number
-            choose_behaviors(3)#a specific gesture, because of time
             # ^ this line would be replaced by camera or IMU input, worst case experimenter prompts
             # we should in general have a way to incorporate this in game to track wrong answers
             speechSay_pub.publish("I'm thinking of your number.") #3 sec
@@ -441,17 +440,20 @@ if __name__=="__main__":
                 random_add = random.randrange(-half_range,half_range) #never add on outside of the guessing range
                 random_guess = random.randrange(1,len(guess_dict))
                 QT = current+random_add
-                random_listen = random.randrange(5,9)
-                random_encourage = random.randrange(9,12)
-                random_other = random.randrange(13,17)
-                speechSay_pub.publish(guess_dict[random_guess].format(QT))            
+                speechSay_pub.publish(guess_dict[random_guess].format(QT))    
+                gesture_talk(1)
+                #encourage the child
+                random_encourage = random.randrange(1,len(encourage_dict))
+                speechSay_pub.publish(encourage_dict[random_encourage].format(name))
                 gesture_talk(1)
                 val = raw_input('Is my guess correct?')
                 # ^ this line would be replaced by camera or IMU input, worst case experimenter prompts
                     # use # number = sys.stdin.readline() if prompt
                     # number.split()[0]
+                
                 if val == 'no':
                     speechSay_pub.publish(second_dict[random_guess].format(name))
+                    speechSay_pub.publish("my guess is "+str(QT)
                     gesture_talk(1)
                     nocounter += 1
                     while True:
