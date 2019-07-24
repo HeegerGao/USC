@@ -32,3 +32,8 @@
      工作居住地方 印度老板真的很友好
 7/21 修改了程序逻辑，给其他输入写好了接口
 7/22 除了把QT主程序修复以外，搞了一天的两个电脑链接问题，搞不出来
+7/23 终于找到了问题所在，原来那个sangerlab的机子网络配置有问题，用Catherine的机子就可以了 tom听起来好牛逼，是个有意思的人 maja给我们建议了一下使用GAS、
+     camera result、fatigue、history等信息来进行encourage和reward函数的生成，使用某一个概率，其中reward的函数是下降的，如从80%->50%，encourage是根
+     据状态来变化的 注意整个程序流程中每个环节都应该需要validate，这样才有意义 tom给我说要么用MDP，要么用简单的权重相加决定一个函数（0~1）来决定encour-
+     age、reward水平 他们好像都知道reinforcement learning方面的知识
+     
