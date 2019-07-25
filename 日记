@@ -36,4 +36,5 @@
      camera result、fatigue、history等信息来进行encourage和reward函数的生成，使用某一个概率，其中reward的函数是下降的，如从80%->50%，encourage是根
      据状态来变化的 注意整个程序流程中每个环节都应该需要validate，这样才有意义 tom给我说要么用MDP，要么用简单的权重相加决定一个函数（0~1）来决定encour-
      age、reward水平 他们好像都知道reinforcement learning方面的知识
-     
+7/24 早上和Jonathan教授测试了orthosis的可用性，可以，然后中午presentation，竟然还算成功，但是仍然听不懂任何其他人的pre，英语实在太烂了 然后成功连接
+     QT和camera，奇怪的是body computer必须要使用QT的wifi才能接收到消息 
