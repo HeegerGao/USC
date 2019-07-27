@@ -38,3 +38,6 @@
      age、reward水平 他们好像都知道reinforcement learning方面的知识
 7/24 早上和Jonathan教授测试了orthosis的可用性，可以，然后中午presentation，竟然还算成功，但是仍然听不懂任何其他人的pre，英语实在太烂了 然后成功连接
      QT和camera，奇怪的是body computer必须要使用QT的wifi才能接收到消息 
+7/25 早上去RoMeLa uber司机说ucla的医生水平很高超，替换人体关节骨骼特别好 踏马的他们实验室没人在门口站了十分钟 竟然有个清华精仪的学长太爽了 他们实验室
+     比清华的小，很拥挤 实验室想做啥就做啥，各种各样的机器人 这是第五年，即将毕业第一批博士生 最好的地方就是他们自己加工自己做机器人，连电机都自己设计
+     下午给QT找了个record video的python script，感谢热心网友 
