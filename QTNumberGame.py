@@ -22,32 +22,15 @@ def choose_behaviors(number):
     global right_pub, left_pub, head_pub, emotionShow_pub, gesturePlay_pub, speechSay_pub, audioPlay_pub
     #talking:1~6
     if(number == 1):
-    #show_both_hands:6.5s
+    #show_both_hands:9s
         emotionShow_pub.publish("QT/talking")
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [10, -60, -15]
-        left_pub.publish(left_arm)
-        #time.sleep(2)
-        right_arm.data = [-10, -60, -15]
-        right_pub.publish(right_arm)
-        time.sleep(2)
-        left_arm.data = [90, -60, -30]
-        left_pub.publish(left_arm)
-        right_arm.data = [-90, -60, -30]
-        right_pub.publish(right_arm)
-        time.sleep(2.5)    
+        gesturePlay_pub.publish("numbergame/talking1")
+        rospy.sleep(9)
     elif(number == 2):
-    #hold:5s
-        gesturePlay_pub.publish("QT/show_QT")
+    #stretch_talk:8s
+        gesturePlay_pub.publish("numbergame/talking2")
         emotionShow_pub.publish("QT/talking")
-        left_arm = Float64MultiArray()
-        left_arm.data = [120, -80, -10]
-        left_pub.publish(left_arm)
-        time.sleep(5)
-        left_arm.data = [90, -60, -30]
-        left_pub.publish(left_arm)
-        time.sleep(3)
+        rospy.sleep(8)
     elif(number == 3):
     #challenge:5s
         gesturePlay_pub.publish("QT/challenge")
@@ -55,71 +38,27 @@ def choose_behaviors(number):
         time.sleep(5)
     elif(number == 4):
     #show left and right:10s
-        # gesturePlay_pub.publish("QT/show_left")
-        # emotionShow_pub.publish("QT/talking")
-        # time.sleep(5)
-        # gesturePlay_pub.publish("QT/show_right")
-        # emotionShow_pub.publish("QT/talking")
-        # time.sleep(5)
         emotionShow_pub.publish("QT/talking")
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [-10, -60, -15]
-        left_pub.publish(left_arm)
-        #time.sleep(2)
-        right_arm.data = [10, -60, -15]
-        right_pub.publish(right_arm)
-        time.sleep(2)
-        left_arm.data = [90, -60, -30]
-        left_pub.publish(left_arm)
-        right_arm.data = [-90, -60, -30]
-        right_pub.publish(right_arm)
-        time.sleep(2.5) 
+        gesturePlay_pub.publish("numbergame/talking3")
+        rospy.sleep(10)
     elif(number == 5):
-    #pointing:6s
+    #teaching,10s
         emotionShow_pub.publish("QT/talking")
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [110, -60, -10]
-        right_arm.data = [0, -90, -10]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(3.5)
-        left_arm.data = [90, -60, -30]
-        right_arm.data = [-90, -60, -30]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(2.5)   
+        gesturePlay_pub.publish("numbergame/talking4")
+        rospy.sleep(10)   
     elif(number == 6):
-    #point each:8.5s
+    #teaching:10s
         emotionShow_pub.publish("QT/talking")
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [0, -90, -10]
-        left_pub.publish(left_arm)
-        right_arm.data = [-120, -80, -10]
-        right_pub.publish(right_arm)
-        time.sleep(2)
-        left_arm.data = [90, -60, -30]
-        left_pub.publish(left_arm)
-        right_arm.data = [-90, -60, -30]
-        right_pub.publish(right_arm)
-        time.sleep(2)
-        emotionShow_pub.publish("QT/talking")
-        right_arm.data = [0, -90, -10]
-        right_pub.publish(right_arm)
-        left_arm.data = [120, -80, -10]
-        left_pub.publish(left_arm)
-        time.sleep(2)
-        right_arm.data = [-90, -60, -30]
-        right_pub.publish(right_arm)
-        left_arm.data = [90, -60, -30]
-        left_pub.publish(left_arm)
-        time.sleep(2.5) 
-
-
-    #listening:7~8
+        gesturePlay_pub.publish("numbergame/talking5")
+        rospy.sleep(10)
     elif(number == 7):
+    #show:9s
+        emotionShow_pub.publish("QT/talking")
+        gesturePlay_pub.publish("numbergame/talking6")
+        rospy.sleep(9)
+
+    #listening:8~9
+    elif(number == 8):
     #nod:4s
         head = Float64MultiArray()
         emotionShow_pub.publish("QT/showing_smile")
@@ -132,7 +71,7 @@ def choose_behaviors(number):
         head.data = [0,0]
         head_pub.publish(head)
         time.sleep(2)
-    elif(number == 8):
+    elif(number == 9):
     #arm back smile:7s
         emotionShow_pub.publish("QT/calming_down")
         time.sleep(1)
@@ -140,102 +79,36 @@ def choose_behaviors(number):
         time.sleep(6)    
 
 
-    #guessing:9~11
-    elif(number == 9):
-    #confused:8s
-        right_arm = Float64MultiArray()
-        right_arm.data = [40, -60, -90]
-        right_pub.publish(right_arm)
-        time.sleep(2)
-        emotionShow_pub.publish("QT/confused")
-        time.sleep(2)
-        right_arm.data = [-90, -60, -30]
-        right_pub.publish(right_arm)
-        time.sleep(4)
+    #guessing:10~12
     elif(number == 10):
-    #touch head:11s
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [-80, -40,-80]
-        right_arm.data = [80, -40,-80]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(3)
+    #confused:11s
         emotionShow_pub.publish("QT/confused")
-        left_arm.data = [-100, -40,-80]
-        right_arm.data = [100, -40,-80]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-80, -40,-80]
-        right_arm.data = [80, -40,-80]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-100, -40,-80]
-        right_arm.data = [100, -40,-80]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-80, -40,-80]
-        right_arm.data = [80, -40,-80]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [90, -60,-30]
-        right_arm.data = [-90, -60,-30]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(4)
+        gesturePlay_pub.publish("numbergame/thinking1")
+        rospy.sleep(11)
     elif(number == 11):
-    #thinking:10s
-        left_arm = Float64MultiArray()
-        right_arm = Float64MultiArray()
-        left_arm.data = [-90, -50, -30]
-        right_arm.data = [-90, -45, -90]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(3.5)
+    #touch head:11s
         emotionShow_pub.publish("QT/confused")
-        left_arm.data = [-90, -70, -40]
-        right_arm.data = [-90, -45, -90]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-90, -50, -30]
-        right_arm.data = [-90, -45, -90]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-90, -70, -40]
-        right_arm.data = [-90, -45, -90]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [-90, -50, -30]
-        right_arm.data = [-90, -45, -90]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(1)
-        left_arm.data = [90, -60, -30]
-        right_arm.data = [-90, -60, -30]
-        left_pub.publish(left_arm)
-        right_pub.publish(right_arm)
-        time.sleep(2.5)  
-
-
-    #feedback and encouragement:12~15
+        gesturePlay_pub.publish("numbergame/thinking2")
+        rospy.sleep(11)
     elif(number == 12):
+    #thinking:11s
+        emotionShow_pub.publish("QT/confused")
+        gesturePlay_pub.publish("numbergame/thinking3")
+        rospy.sleep(11)
+
+
+    #feedback and encouragement:13~16
+    elif(number == 13):
     #surprise:5.5s
         gesturePlay_pub.publish("QT/surprise")
         emotionShow_pub.publish("QT/surprise")
         time.sleep(5.5)
-    elif(number == 13):
+    elif(number == 14):
     #happy:5s
         gesturePlay_pub.publish("QT/happy")
         emotionShow_pub.publish("QT/happy")
         time.sleep(5)
-    elif(number == 14):
+    elif(number == 15):
     #hug:6s
         left_arm = Float64MultiArray()
         right_arm = Float64MultiArray()
@@ -250,7 +123,7 @@ def choose_behaviors(number):
         right_arm.data = [-90, -60, -30]
         right_pub.publish(right_arm)
         time.sleep(3)
-    elif(number == 15):
+    elif(number == 16):
     #hand clap:8.8s
         left_arm = Float64MultiArray()
         right_arm = Float64MultiArray()
@@ -287,19 +160,19 @@ def choose_behaviors(number):
         time.sleep(3)
 
 
-    #special_function:16~18
-    elif(number == 16):
+    #special_function:17~19
+    elif(number == 17):
     #hi/bye:7s
         gesturePlay_pub.publish("QT/hi")
         emotionShow_pub.publish("QT/happy")
         time.sleep(7)
-    elif(number == 17):
+    elif(number == 18):
     #fly kiss:7.5s
         gesturePlay_pub.publish("QT/kiss")
         time.sleep(1)
         emotionShow_pub.publish("QT/kiss")
         time.sleep(6.5)
-    elif(number == 18):
+    elif(number == 19):
     #yawn:6.8s
         gesturePlay_pub.publish("QT/yawn")
         time.sleep(0.8)
@@ -307,7 +180,7 @@ def choose_behaviors(number):
         time.sleep(6)
     
     #rest
-    elif(number == 19):
+    elif(number == 20):
     #
         abc =1
         
@@ -319,26 +192,26 @@ def choose_behaviors(number):
 def gesture_talk(num):
     i = 1
     while i <= num:
-        choose_behaviors(random.randint(1, 6))
+        choose_behaviors(random.randint(1, 7))
         i = i + 1
     
     
 def gesture_listen(num):
     i = 1
     while i <= num:
-        choose_behaviors(random.randint(7, 8))
+        choose_behaviors(random.randint(8, 9))
         i = i + 1
     
 
 def gesture_guess(num):
     i = 1
     while i <= num:
-        choose_behaviors(random.randint(9, 11))
+        choose_behaviors(random.randint(10, 12))
         i = i + 1
 
 
 def gesture_encourage():
-    choose_behaviors(random.randint(12, 15))
+    choose_behaviors(random.randint(13, 16))
 
 
 #encourage decision function
