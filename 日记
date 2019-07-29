@@ -47,3 +47,11 @@
 7/28 看完了李宏毅的RL 突然感觉到了PhD的意思，一切研究高级起来都是一些哲学问题，发现问题分析问题解决问题，并不用到很多很复杂的技巧，比如HRI、RL这些，
      有些方法看上去很傻逼，感觉一点也不高大上，就那么设计几个步骤就行了，但是正是这种分析问题给出步骤的能力才是科学家应该具有的，而不只是学个爬虫学个
      前端学个python会用来写工程这样的看起来很充实实际上无用的东西
+7/29 "然而控制理论能否突破现在依靠物理直觉和经验，能否突破小作坊一样一个一个设计控制器的现状，能否突破非线性系统里缺乏统一工具的现状，也许才是控制理论的
+     未来." 
+     "最优控制 Optimal  Control 改称 轨迹规划 Trajectory Planning 了"
+     "自适应控制 Adaptive Control 改称 强化学习 Reinforcement Learning了"
+     "模型预测控制 Model Predictive Control 改称 滚动优化 Receding Horizon Optimization 了"
+     "状态估计 State Estimation 包括 卡尔曼滤波 Kalman Filter、粒子滤波 Particle Filter 等 改称 贝叶斯 Bayesian、马尔可夫蒙特卡罗 Markov Chain Monte Carlo 等了"
+     系统辨识 System Identification 改称 学习 Learning 了"
+     "控制 Control 则改称 自动系统 Autonomous System 了"
