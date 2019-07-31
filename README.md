@@ -1,6 +1,4 @@
-# USC
-Using orthoses and QTrobot to help children with dystonia express nonverbal intensions
-===
+# Orthoses and QTrobot: Helping Children Express Nonverbal Intensions
 
 
 
