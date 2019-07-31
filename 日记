@@ -56,4 +56,7 @@
      "状态估计 State Estimation 包括 卡尔曼滤波 Kalman Filter、粒子滤波 Particle Filter 等 改称 贝叶斯 Bayesian、马尔可夫蒙特卡罗 Markov Chain Monte Carlo 等了"
      系统辨识 System Identification 改称 学习 Learning 了"
      "控制 Control 则改称 自动系统 Autonomous System 了"
+7/30 逛了gettycenter，真是有钱人钱没地方花了，免费开放修了上山铁路让我们参观，虽然毛都看不懂，但是还是能够看出来伦勃朗的比那些中世纪宗教的好多了，那个
+     后花园真滴牛逼，我也想有一个 下午回来搞了一下使用depth来检测手的方式，搞懂了c++传参数的方法，使用引用“&”即可，不用写指针 注意要在外面把所有的空
+     间分配好，否则将会函数自动创建空间，导致传不出来 那个深度信息真的辣鸡，竟然是nan到1、2、各种小数，还是float
      
