@@ -286,7 +286,7 @@ def feedback_function(thumb_angle, time, name):
             random_encourage = random.randrange(1,len(encourage_dict))
             speechSay_pub.publish(encourage_dict[random_encourage].format(name))
             print(encourage_dict[random_encourage].format(name))            
-            rospy.sleep(7)
+            # rospy.sleep(7)
 
     else:
         reward_prob = 0.5 + abs(thumb_angle/100.0) + time/300.0 #larger angle, better performance/ longer the time playing, more reward
@@ -301,18 +301,21 @@ def feedback_function(thumb_angle, time, name):
             random_rew = random.randrange(1,len(reward_dict))
             speechSay_pub.publish(reward_dict[random_rew].format(name))
             print(reward_dict[random_rew].format(name))
-            rospy.sleep(9)
+            # rospy.sleep(9)
 
 
 #camera functions
-def get_thumb_input():
-    # print("enter")
+def isThumbUp_Down():
     #wait for 5s to get the best thumb input during 5s, get 50 results totally
+    global start_time, name
+    
     i = 1
     reses = []
     angles = []
-    while(i<40):
+    feed_flag = 1# to prevent if the child wants to replay
+    while(i<20):
         # print i
+        #get thumb messages
         msg = rospy.wait_for_message("/thumb_result",String)
         msg = str(msg.data)
         msg_list = msg.split('+')
@@ -320,26 +323,60 @@ def get_thumb_input():
         angle_msg = float(msg_list[1])
         reses.append(res_msg)
         angles.append(angle_msg)
-        i = i+1
-        time.sleep(0.1)
-    print("down")
-    return reses,angles
 
-def isThumbUp_Down():
-    #add callback function
-    #return up or down and the angle
-    reses, angles = get_thumb_input()
-    if reses.count(1) > 15:
+        #get button messages
+        data = rospy.wait_for_message("/openwearable_new",String)
+        strdata = str(data)
+
+        # hacky split
+        val = strdata.split(':')
+        val = val[1].split('\\t')
+        temp = val[0].split('"')
+        
+        global frame
+        global state
+        global button
+        global yescounter
+        global nocounter
+        global wrongcounter
+        
+        frame = int(temp[1])
+        state = int(val[1])
+        button = int(val[2])
+        
+        print(frame, state, button)
+        
+        if button == 1:#you have trouble and want to replay
+            print("ok!please do again.")
+            i=0
+            reses = []
+            angles = []
+            feed_flag = 0
+        if button == -1:
+            #quit the game
+            #print("Number of yes: "+str(yescounter)+". Number of no: "+str(nocounter)+". Number wrong: "+str(wrongcounter))
+            speechSay_pub.publish("OK! I had a great time with you today. Bye-bye!")
+            choose_behaviors(17)
+            sys.exit()
+        i = i+1
+        if i ==5 and feed_flag == 1:#do feedback function
+            feedback_function(abs(angle_msg),time.time()-start_time,name)
+        time.sleep(0.1)
+
+    print("finished")
+    if reses.count(1) > 10: #if thumbs up more than half the time
         angles = nlargest(10, angles)
         res = sum(angles)/len(angles)
         return 1, res
-    elif reses.count(-1) > 15:
+    elif reses.count(-1) > 10: #if thumbs down more than half the time
         angles = [ -x for x in angles]
         angles = nlargest(10, angles)
         res = -sum(angles)/len(angles)
         return -1,res
     else:
         return 0,sum(angles)/len(angles)
+    
+    
 
 
 #data collection function
@@ -387,11 +424,12 @@ def callback():
         print(frame, state, button)
         i = i+1
     
-        # time.sleep(0.1)
+        
         if button == 1:
             return 1
         if button == -1:
             return -1
+        
     return 0
     
 def listener():
@@ -406,6 +444,7 @@ def listener():
 
 
 if __name__=="__main__":
+    name = 'guy'
     #initialize dictionary
     guess_dict,second_dict,encourage_dict,clarify_dict,reward_dict = dictionary_set()
     
@@ -435,9 +474,9 @@ if __name__=="__main__":
         rospy.sleep(1)
     # get_thumb_input()
 
-    game_flag = 1 #set to 0 to play intro
+    game_flag = 0 #set to 0 to play intro
     start_time = time.time()
-    name = 'Catherine'
+    #name = 'Catherine'
     
     while 1:
         #game always running, until shutdown by children
@@ -449,14 +488,14 @@ if __name__=="__main__":
         if res == -1:
             #game over
             speechSay_pub.publish("I had a great time with you today. Bye-bye!")
-            choose_behaviors(16)
+            choose_behaviors(17)
             break
         elif res == 1:
             if game_flag == 0:#the first time to play
                 #introduction
                 speechSay_pub.publish("Hello, my name is Q T Robot. What is your name? ") #6.5 sec
                 print("Hello, my name is Q T Robot. What is your name? ") 
-                choose_behaviors(16)
+                choose_behaviors(17)
                 name = raw_input('What is your name? ')
                 speechSay_pub.publish("Hi   "+name+""",      I would like to play a guessing game with you. 
                 In the game I get to ask you questions, and you get to answer yes or no
@@ -529,22 +568,10 @@ if __name__=="__main__":
                     choose_behaviors(2)
                     speechSay_pub.publish("Answer me with a thumbs up or down"+str(name))
                     print("Answer me with a thumbs up or down"+str(name))
-#incorporate the instruction randomly (or just the first few times?) to remind them of the instructions
-                    button_state = callback()
-                    if button_state == 1:
-                        print("I am having trouble.")
-                        print("Number of yes: "+str(yescounter)+". Number of no: "+str(nocounter)+". Number wrong: "+str(wrongcounter))
-                        speechSay_pub.publish("OK! I had a great time with you today. Bye-bye!")
-                        choose_behaviors(16)
-                        sys.exit()
 
-                        
                     res, the_angle = isThumbUp_Down()
 
-#remove the following lines for the button state and put in isThumbUp_Down()
-                    
-#which loop does sys exit from?
-                    feedback_function(the_angle,time.time()-start_time,name)                  
+                    # feedback_function(the_angle,time.time()-start_time,name)                  
                     if res == -1:
                         if QT == start: #prompt if they make a wrong answer about the correctness of QTs guess
                             speechSay_pub.publish(clarify_dict[random_guess].format(name))
@@ -564,7 +591,7 @@ if __name__=="__main__":
                             while True:
                                 print("Please do a thumbs up/down to say higher or lower")
 #how many times should kids be reminded of this?
-                                feedback_function(the_angle,time.time()-start_time,name)
+                                # feedback_function(the_angle,time.time()-start_time,name)
                                 res, the_angle = isThumbUp_Down()
                                 if res == 1:
                                     if QT > start:
@@ -572,7 +599,7 @@ if __name__=="__main__":
                                         print(clarify_dict[random_guess].format(name))
                                         choose_behaviors(2)
                                         wrongcounter += 1
-                                        feedback_function(the_angle,time.time()-start_time,name)
+                                        # feedback_function(the_angle,time.time()-start_time,name)
                                     else:
                                         low = QT
                                         yescounter += 1
@@ -583,7 +610,7 @@ if __name__=="__main__":
                                         print(clarify_dict[random_guess].format(name))
                                         choose_behaviors(2)
                                         wrongcounter += 1
-                                        feedback_function(the_angle,time.time()-start_time,name)
+                                        # feedback_function(the_angle,time.time()-start_time,name)
                                     else:
                                         high = QT
                                         nocounter += 1
@@ -596,7 +623,7 @@ if __name__=="__main__":
                         speechSay_pub.publish('Hooray! I got it! Thanks for playing with me. Do you want to play again with me?') #9 sec
                         print('Hooray! I got it! Thanks for playing with me. Do you want to play again with me?') #9 sec
 #vary this message. also should they play a minimum of 3 games mandatory, the rest optional? 
-                        choose_behaviors(13)
+                        choose_behaviors(14)
                         yescounter += 1
                         print("Number of yes: "+str(yescounter)+". Number of no: "+str(nocounter)+". Number wrong: "+str(wrongcounter))
                         print('I got it!')
