@@ -8,10 +8,10 @@ In this project, we conducted two experiments on children (around 11 years old) 
 
 
 
- 表头  | 表头  | 表头
- ---- | ----- | ------  
- 单元格内容  | 单元格内容 | 单元格内容 
- 单元格内容  | 单元格内容 | 单元格内容  
+ DAY1  | DAY2  
+ ---- | ----- 
+ Orthoses Power Off & Playing with a screen  | Orthoses Power Off & Playing with QTrobot
+ Orthoses Power On & Playing with a screen   | Orthoses Power On & Playing with QTrobot 
 
 
 
