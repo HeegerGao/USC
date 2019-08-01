@@ -55,4 +55,22 @@ catkin_make
 ```
 set(OpenCV_DIR /home/sangerlab/Downloads/opencv-3.4.6/my_build)
 ```
+* cd to your catkin workspace
+```
+catkin_make
+soure devel/setup.bash
+```
+* Now you can run the camera. If you want to connect with QTrobot, you need to do this first:
+ * connect to QT104 wifi
+ * export ROS_MASTER_URI=http://192.168.100.1:11311
+ * export ROS_IP=YOUR IP ADDRESS  (example:export ROS_IP=10.42.0.250)
+
+```
+roscore (if you are connecting with QTrobot, you don't need to do this)
+roslaunch astra_launch astra.launch
+rosrun libuvc_camera camera_node 
+rosrun thumb get_image
+rosrun thumb get_state.py
+```
+
 
