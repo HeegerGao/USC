@@ -6,14 +6,14 @@ In this project, we conducted two experiments on children (around 11 years old) 
 * Orthoses Experiment: if children with orthoses can express their nonverbal intentions better.
 * QTrobot Experiment:  if children are more willing to interact with a humanoid robot than normal electronic equipment, for example, a screen.<br>
 
+The experiment will go like this table:
+
 
 
  DAY1  | DAY2  
  ---- | ----- 
  Orthoses Power Off & Playing with a screen  | Orthoses Power Off & Playing with QTrobot
  Orthoses Power On & Playing with a screen   | Orthoses Power On & Playing with QTrobot 
-
-
 
 We designed a set of “number games” for children to play with a robot called QTrobot to test the two metrics during the game and collect all kinds of data (raw video, audio etc.) for later analysis.<br> During the game, QTrobot will do different speaking, listening, guessing and other kinds of gestures and a lot of emotions to interact with children, and we designed encouraging and rewarding feedback for QTrobot during the game to make children more comfortable. In addition, we also did the work of using the camera to identify the thumb orientation, which is used in the game.
 
