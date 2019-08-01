@@ -23,7 +23,13 @@ We designed a set of “number games” for children to play with a robot called
 * pictures: all pictures in the projects
 * videos: all demos of the projects
 
-## Instructions
+## Instructions for Astra Pro
+* sudo apt-get install build-essential freeglut3 freeglut3-dev
+```
+sudo apt-get install ros-indigo-astra-camera ros-indigo-astra-launch
+```
 * Install [opencv-3.4.6](https://github.com/opencv/opencv/archive/3.4.6.zip) and follow [the instruction](https://docs.opencv.org/3.4.6/d7/d9f/tutorial_linux_install.html)
+* 
+* Download folder "thumb" to your catkin workspace
 * 
 
