@@ -365,7 +365,7 @@ def record_data():
 def callback():
     i=1
     while i<20:
-        data = rospy.wait_for_message("/openwearable",String)
+        data = rospy.wait_for_message("/openwearable_new",String)
         strdata = str(data)
 
         # hacky split
@@ -530,9 +530,6 @@ if __name__=="__main__":
                     speechSay_pub.publish("Answer me with a thumbs up or down"+str(name))
                     print("Answer me with a thumbs up or down"+str(name))
 #incorporate the instruction randomly (or just the first few times?) to remind them of the instructions
-                    res, the_angle = isThumbUp_Down()
-
-#remove the following lines for the button state and put in isThumbUp_Down()
                     button_state = callback()
                     if button_state == 1:
                         print("I am having trouble.")
@@ -540,6 +537,12 @@ if __name__=="__main__":
                         speechSay_pub.publish("OK! I had a great time with you today. Bye-bye!")
                         choose_behaviors(16)
                         sys.exit()
+
+                        
+                    res, the_angle = isThumbUp_Down()
+
+#remove the following lines for the button state and put in isThumbUp_Down()
+                    
 #which loop does sys exit from?
                     feedback_function(the_angle,time.time()-start_time,name)                  
                     if res == -1:
