@@ -7,11 +7,12 @@ In this project, we conducted two experiments on children (around 11 years old) 
 * QTrobot Experiment:  if children are more willing to interact with a humanoid robot than normal electronic equipment, for example, a screen.<br>
 
 
-Name | Academy | score 
-- | :-: | -: 
-Harry Potter | Gryffindor| 90 
-Hermione Granger | Gryffindor | 100 
-Draco Malfoy | Slytherin | 90
+
+ 表头  | 表头  | 表头
+ ---- | ----- | ------  
+ 单元格内容  | 单元格内容 | 单元格内容 
+ 单元格内容  | 单元格内容 | 单元格内容  
+
 
 
 We designed a set of “number games” for children to play with a robot called QTrobot to test the two metrics during the game and collect all kinds of data (raw video, audio etc.) for later analysis.<br> During the game, QTrobot will do different speaking, listening, guessing and other kinds of gestures and a lot of emotions to interact with children, and we designed encouraging and rewarding feedback for QTrobot during the game to make children more comfortable. In addition, we also did the work of using the camera to identify the thumb orientation, which is used in the game.
