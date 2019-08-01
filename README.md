@@ -17,8 +17,11 @@ The experiment will go like this table:
 
 We designed a set of “number games” for children to play with a robot called QTrobot and wearing orthoses to test the two metrics during the game and collect all kinds of data (raw video, audio etc.) for later analysis.<br> <br>During the game, QTrobot will do different speaking, listening, guessing and other kinds of gestures and a lot of emotions to interact with children, and we designed encouraging and rewarding feedback for QTrobot during the game to make children more comfortable. In addition, we also did the work of using the camera to identify the thumb orientation, which is used in the game.<br>
 
-## Document Instruction
+## File Location
 * thumb: thumb detection algorithm files and installation instruction
 * QTrobot: QTrobot gestures/emotions/numbergame
 * pictures: all pictures in the projects
 * videos: all demos of the projects
+
+## Instructions
+
