@@ -24,10 +24,32 @@ We designed a set of “number games” for children to play with a robot called
 * videos: all demos of the projects
 
 ## Instructions for Astra Pro
-* sudo apt-get install build-essential freeglut3 freeglut3-dev
+install some dependies
 ```
-sudo apt-get install ros-indigo-astra-camera ros-indigo-astra-launch
+sudo apt-get install build-essential freeglut3 freeglut3-dev
 ```
+install astra camera ros packages(for using depth images)
+```
+sudo apt-get install ros-kinetic-astra-camera ros-kinetic-astra-launch
+```
+install libuvc(for use rgb image)
+```
+cd ~
+git clone https://github.com/ktossell/libuvc
+cd libuvc
+mkdir build
+cd build
+cmake ..
+make && sudo make install
+```
+install libvuc-ros
+```
+cd ~/catkin_ws/src
+git clone https://github.com/ktossell/libuvc_ros
+cd ..
+catkin_make 
+```
+
 * Install [opencv-3.4.6](https://github.com/opencv/opencv/archive/3.4.6.zip) and follow [the instruction](https://docs.opencv.org/3.4.6/d7/d9f/tutorial_linux_install.html)
 * 
 * Download folder "thumb" to your catkin workspace
