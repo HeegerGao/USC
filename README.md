@@ -51,5 +51,8 @@ catkin_make
 ```
 * Install [opencv-3.4.6](https://github.com/opencv/opencv/archive/3.4.6.zip) and follow [the instruction](https://docs.opencv.org/3.4.6/d7/d9f/tutorial_linux_install.html)
 * Download folder "thumb" to your catkin workspace
-* Change CMakeLists.txt to use Opencv:
+* Change opencv location in CMakeLists.txt, remember it's the build folder. Example:
+```
+set(OpenCV_DIR /home/sangerlab/Downloads/opencv-3.4.6/my_build)
+```
 
