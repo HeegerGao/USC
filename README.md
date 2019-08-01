@@ -1,7 +1,7 @@
 # Orthoses And QTrobot:<br>Helping Children Express Nonverbal Intensions
 ## 0 Background Information
-Dystonia is a movement disorder in which a person's muscles contract uncontrollably. The contraction causes the affected body part to twist involuntarily, resulting in repetitive movements or abnormal postures. Physical therapy is a common method of treating dystonia, but it requires a small number of specialists and is expensive. At the same time, these patients are often unable to communicate verbally, so understanding their nonverbal intentions and helping them express nonverbal intentions are essential.<br>
-[![Kids with Dystonia](https://github.com/HeegerGao/USC/raw/master/pictures/c7f2d75a0921ac44bfd3fd6a2aaddc5.png)](https://youtu.be/RBSRPd_Cwuk)
+  Dystonia is a movement disorder in which a person's muscles contract uncontrollably. The contraction causes the affected body part to twist involuntarily, resulting in repetitive movements or abnormal postures. Physical therapy is a common method of treating dystonia, but it requires a small number of specialists and is expensive. At the same time, these patients are often unable to communicate verbally, so understanding their nonverbal intentions and helping them express nonverbal intentions are essential.<br>
+[Children with dystonia](https://youtu.be/RBSRPd_Cwuk)<br>
 
 In this project, we conducted two experiments on children (around 11 years old) with dystonia: 
 * Orthoses Experiment: if children with orthoses can express their nonverbal intentions better.
