@@ -24,4 +24,6 @@ We designed a set of “number games” for children to play with a robot called
 * videos: all demos of the projects
 
 ## Instructions
+* Install [opencv-3.4.6](https://github.com/opencv/opencv/archive/3.4.6.zip) and follow [the instruction](https://docs.opencv.org/3.4.6/d7/d9f/tutorial_linux_install.html)
+* 
 
