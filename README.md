@@ -24,6 +24,7 @@ We designed a set of “number games” for children to play with a robot called
 * videos: all demos of the projects
 
 ## Instructions for Astra Pro and Camera Algorithm
+### Installation
 * install some dependies
 ```
 sudo apt-get install build-essential freeglut3 freeglut3-dev
@@ -60,6 +61,7 @@ set(OpenCV_DIR /home/sangerlab/Downloads/opencv-3.4.6/my_build)
 catkin_make
 soure devel/setup.bash
 ```
+### Running
 * Now you can run the camera. If you want to connect with QTrobot, you need to do this first:
  * connect to QT104 wifi
  * export ROS_MASTER_URI=http://192.168.100.1:11311 (or write it into your ~/.bashrc file and source it)
@@ -67,11 +69,15 @@ soure devel/setup.bash
 
 ```
 roscore (if you are connecting with QTrobot, you don't need to do this)
-roslaunch astra_launch astra.launch
-rosrun libuvc_camera camera_node 
+rosrun libuvc_camera camera_node
+roslaunch astra_launch astra.launch 
 rosrun thumb get_image
 rosrun thumb get_state.py
 ```
-
+* Tips:
+ * In case that ```rosrun libuvc_camera camera_node``` get the error message like this:
+ 
 ## Instruction for QTrobot
-
+* QTrobot has two computers. The head computer runs ROS CORE and ROS MASTER, and ROS_MASTER_URI is http://192.168.100.1:11311
+* If you want to connect body computer to another computer, you need to let the two computer both connected to QT104 wifi
+* To run this project, you should first 
