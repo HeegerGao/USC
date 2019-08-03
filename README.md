@@ -76,14 +76,13 @@ rosrun thumb get_state.py
 ```
 * Tips:
     * In case that ```rosrun libuvc_camera camera_node``` get the error message like this:<br>
- ![](https://github.com/HeegerGao/USC/raw/master/pictures/error_libuvc.png)
+ ![](https://github.com/HeegerGao/USC/raw/master/pictures/error_libuvc.png)<br>
     you should do like this:
         * first replug the camera (very important!)
-        * second do sudo chmod a+rw ...(the dev name)
-        
- 
- 
+        * then do sudo chmod a+rw ...(the dev name)
+    * you must run as the same order as this tutorial<br>
+    
 ## Instruction for QTrobot
 * QTrobot has two computers. The head computer runs ROS CORE and ROS MASTER, and ROS_MASTER_URI is http://192.168.100.1:11311
 * If you want to connect body computer to another computer, you need to let the two computer both connected to QT104 wifi
-* To run this project, you should first 
+* To run this project, you should first run the camera, and then run QTNumberGame.py
