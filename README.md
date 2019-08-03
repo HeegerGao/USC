@@ -17,12 +17,19 @@ The experiment will go like this table:
 
 We designed a set of “number games” for children to play with a robot called QTrobot and wearing orthoses to test the two metrics during the game and collect all kinds of data (raw video, audio etc.) for later analysis.<br> <br>During the game, QTrobot will do different speaking, listening, guessing and other kinds of gestures and a lot of emotions to interact with children, and we designed encouraging and rewarding feedback for QTrobot during the game to make children more comfortable. In addition, we also did the work of using the camera to identify the thumb orientation, which is used in the game.<br>
 
-## File Location
-* thumb: thumb detection algorithm files and installation instruction
-* QTrobot: QTrobot gestures/emotions/numbergame
-* pictures: all pictures in the projects
-* videos: all demos of the projects
-
+## File Instruction
+* folder thumb: thumb detection, a catkin package
+* QTNumberGame.py: QTrobot number game code
+* pictures: some pictures in the projects
+* videos: some demos of the projects
+* rosbag2video.py: rosbag to video
+* all demos:
+    https://cloud.tsinghua.edu.cn/f/4632cf929c404e64b7f5/
+    https://cloud.tsinghua.edu.cn/f/14dc333b78b84bff9940/
+    https://cloud.tsinghua.edu.cn/f/24b9d468d50e4f2db711/
+    https://cloud.tsinghua.edu.cn/f/fc48acfbe1714f45a605/
+    https://cloud.tsinghua.edu.cn/f/a3fd22773387484cb18f/
+    
 ## Instructions for Astra Pro and Camera Algorithm
 ### Installation
 * install some dependies
