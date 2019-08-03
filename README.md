@@ -86,3 +86,4 @@ rosrun thumb get_state.py
 * QTrobot has two computers. The head computer runs ROS CORE and ROS MASTER, and ROS_MASTER_URI is http://192.168.100.1:11311
 * If you want to connect body computer to another computer, you need to let the two computer both connected to QT104 wifi
 * To run this project, you should first run the camera, and then run QTNumberGame.py
+* I have record some gestures in the head computer's folder:numbergame/talking2 compared to folder QT.
