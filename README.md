@@ -77,6 +77,10 @@ rosrun thumb get_state.py
 * Tips:
     * In case that ```rosrun libuvc_camera camera_node``` get the error message like this:<br>
  ![](https://github.com/HeegerGao/USC/raw/master/pictures/error_libuvc.png)
+    you should do like this:
+        * first replug the camera (very important!)
+        * second do sudo chmod a+rw ...(the dev name)
+        
  
  
 ## Instruction for QTrobot
