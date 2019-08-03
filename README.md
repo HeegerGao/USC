@@ -76,7 +76,7 @@ rosrun thumb get_state.py
 ```
 * Tips:
  * In case that ```rosrun libuvc_camera camera_node``` get the error message like this:<br>
- ![](https://github.com/HeegerGao/USC/raw/master/pictures/Screenshot from 2019-07-31 17-16-37.png)
+ ![](https://github.com/HeegerGao/USC/raw/master/pictures/error_libuvc.png)
  
 ## Instruction for QTrobot
 * QTrobot has two computers. The head computer runs ROS CORE and ROS MASTER, and ROS_MASTER_URI is http://192.168.100.1:11311
