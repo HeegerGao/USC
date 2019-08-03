@@ -87,3 +87,7 @@ rosrun thumb get_state.py
 * If you want to connect body computer to another computer, you need to let the two computer both connected to QT104 wifi
 * To run this project, you should first run the camera, and then run QTNumberGame.py
 * I have record some gestures in the head computer's folder:numbergame/talking2 compared to folder QT.
+## Instruction for Recording Data
+* For video data, you just need run<br> ```rosbag record TOPIC_NAME```<br>For example:<br>```rosbag record /image_raw```<br>
+  Then run rosbag2video.py to transform bagfile to video:<br>```rosbag2video.py BAGFILE_NAME```<br>
+* For other kind of topics, you just need to use ```rosbag record TOPIC_NAME```
