@@ -86,7 +86,7 @@ rosrun thumb get_state.py
  ![](https://github.com/HeegerGao/USC/raw/master/pictures/error_libuvc.png)<br>
     you should do like this:
         * first replug the camera (very important!)
-        * then do sudo chmod a+rw ...(the dev name)
+        * then do ```sudo chmod a+rw ...(the dev name)```
     * you must run as the same order as this tutorial<br>
     
 ## Instruction for QTrobot
