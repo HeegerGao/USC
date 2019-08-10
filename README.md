@@ -40,7 +40,7 @@ sudo apt-get install build-essential freeglut3 freeglut3-dev
 ```
 sudo apt-get install ros-kinetic-astra-camera ros-kinetic-astra-launch
 ```
-* install libuvc (for use rgb images)
+* install libuvc (for rgb images)
 ```
 cd ~
 git clone https://github.com/ktossell/libuvc
@@ -50,7 +50,7 @@ cd build
 cmake ..
 make && sudo make install
 ```
-* install libvuc-ros (for use rgb images)
+* install libvuc-ros (for rgb images)
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/ktossell/libuvc_ros
